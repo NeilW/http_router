@@ -23,6 +23,14 @@ class HttpRouter
       end
     end
 
+    def websocket?
+      !!@websocket
+    end
+
+    def add_websocket(value)
+      @websocket = true
+    end
+
     def add_default_values(hash)
       @default_values ||= {}
       @default_values.merge!(hash)

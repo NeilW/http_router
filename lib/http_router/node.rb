@@ -15,11 +15,16 @@ class HttpRouter
     autoload :Scheme,              'http_router/node/scheme'
     autoload :Lookup,              'http_router/node/lookup'
     autoload :Path,                'http_router/node/path'
+    autoload :Websocket,	   'http_router/node/websocket'
 
     attr_reader :router
 
     def initialize(router, parent, matchers = [])
       @router, @parent, @matchers = router, parent, matchers
+    end
+
+    def add_websocket
+      add(Websocket.new(@router, self))
     end
 
     def add_variable
