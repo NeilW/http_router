@@ -139,6 +139,11 @@ class HttpRouter
   # Returns the route object.
   def conenct(path, opts = {}, &app); add_with_request_method(path, :conenct, opts, &app); end
 
+  # Adds a path that only responds if the connection is a websocket request.
+  #
+  # Returns the route object
+  def websocket(path, opts = {}, &app); add(path, opts.merge(:websocket => true), &app); end
+
   # Performs recoginition without actually calling the application and returns an array of all
   # matching routes or nil if no match was found.
   def recognize(env, &callback)
